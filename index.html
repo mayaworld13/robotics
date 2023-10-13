@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joint Motion Graph Calculator</title>
+    <style>
+        body {
+            background-color: #000;
+            color: lime;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            background-color: #111;
+            color: lime;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #0f0;
+            color: #000;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #080;
+        }
+
+        /* Hacker-style button */
+        #team-button {
+            background-color: #000;
+            color: #0f0;
+            border: 1px solid #0f0;
+            padding: 10px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            cursor: pointer;
+	    width: 22%;
+            margin-top: 20px; /* Adjust the margin to move the button down */
+        }
+
+        #team-button:hover {
+            background-color: #0f0;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Joint Motion Graph Calculator</h1>
+    <form action="/cgi-bin/calculate_graph.py" method="post">
+        <label for="initial_position">Initial Position (degrees):</label>
+        <input type="text" id="initial_position" name="initial_position"><br>
+
+        <label for="final_position">Final Position (degrees):</label>
+        <input type="text" id="final_position" name="final_position"><br>
+
+        <label for="time_duration">Time Duration (seconds):</label>
+        <input type="text" id="time_duration" name="time_duration"><br>
+
+        <input type="submit" value="Calculate">
+    </form>
+
+    <!-- Hacker-style "Team" button -->
+    <button id="team-button">Team</button>
+
+    <script>
+        // JavaScript to handle the button click event
+        document.getElementById("team-button").addEventListener("click", function() {
+            window.open("team.html", "_blank"); // Open a new HTML page named "team.html" in a new tab
+        });
+    </script>
+</body>
+</html>
+
