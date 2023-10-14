@@ -7,33 +7,41 @@ import cgitb
 from io import BytesIO
 import base64
 
-# Enable error traceback in CGI
 cgitb.enable()
 
-# Function to calculate the motion parameters
+
 def calculate_motion(theta_i, theta_f, T):
-    # Calculate coefficients
-    a = theta_i
-    b = 0
-    c = 3 * (theta_f - theta_i) / T**2
-    d = -2 * (theta_f - theta_i) / T**3
+    if theta_i == theta_f:
+        
+        t = np.array([0])
+        theta = np.array([theta_i])
+        theta_dot = np.array([0])
+        theta_double_dot = np.array([0])
+        V_max = 0
+        A_max = 0
+    else:
+        # Calculate coefficients
+        a = theta_i
+        b = 0
+        c = 3 * (theta_f - theta_i) / T**2
+        d = -2 * (theta_f - theta_i) / T**3
 
-    # Time points
-    t = np.linspace(0, T, 1000)
+        # Time points
+        t = np.linspace(0, T, 1000)
 
-    # Position polynomial
-    theta = a + b * t + c * t**2 + d * t**3
+        # Position polynomial
+        theta = a + b * t + c * t*2 + d * t*3
 
-    # Velocity polynomial
-    theta_dot = b + 2 * c * t + 3 * d * t**2
+        # Velocity polynomial
+        theta_dot = b + 2 * c * t + 3 * d * t**2
 
-    # Acceleration polynomial
-    theta_double_dot = 2 * c + 6 * d * t
+        # Acceleration polynomial
+        theta_double_dot = 2 * c + 6 * d * t
 
-    # Find maximum velocity and acceleration
-    t_max_velocity = -b / (2 * c)
-    V_max = b + 2 * c * t_max_velocity + 3 * d * t_max_velocity**2
-    A_max = 2 * c
+        # Find maximum velocity and acceleration
+        t_max_velocity = -b / (2 * c)
+        V_max = b + 2 * c * t_max_velocity + 3 * d * t_max_velocity**2
+        A_max = 2 * c
 
     return t, theta, theta_dot, theta_double_dot, V_max, A_max
 
