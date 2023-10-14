@@ -8,18 +8,31 @@
             color: lime;
             font-family: 'Courier New', monospace;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         h1 {
             font-size: 30px;
         }
 
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            flex: 1;
+            text-align: left; 
+        }
+
         form {
-            width: 300px;
-            margin: 0 auto;
-            background-color: #222;
-            padding: 20px;
-            border-radius: 5px;
+            background-color: #000;
+            padding: 30px; 
+            border: 1px solid #0f0; 
             box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
         }
 
@@ -42,59 +55,74 @@
             width: 100%;
             background-color: #0f0;
             color: #000;
-            padding: 10px;
+            padding: 15px; 
             border: none;
             border-radius: 3px;
             cursor: pointer;
+            font-size: 16px; 
         }
 
         input[type="submit"]:hover {
             background-color: #080;
         }
 
-        /* Hacker-style button */
+        
         #team-button {
             background-color: #000;
             color: #0f0;
             border: 1px solid #0f0;
-            padding: 10px 20px;
+            padding: 15px; 
             font-family: 'Courier New', monospace;
-            font-size: 16px;
+            font-size: 25px; 
+            width: 100%; 
             cursor: pointer;
-	    width: 22%;
-            margin-top: 20px; /* Adjust the margin to move the button down */
+            margin-top: 20px; 
         }
 
         #team-button:hover {
             background-color: #0f0;
             color: #000;
         }
+
+       
+        img {
+            width: 500px;
+            margin-left: 40px; 
+        }
     </style>
 </head>
 <body>
-    <h1>Joint Motion Graph Calculator</h1>
-    <form action="/cgi-bin/calculate_graph.py" method="post">
-        <label for="initial_position">Initial Position (degrees):</label>
-        <input type="text" id="initial_position" name="initial_position"><br>
+    
+    <div class="container">
+        <div class="content">
+            <h1 style="font-size: 36px; color: #0f0; text-transform: uppercase; font-weight: bold;">Joint Motion Graph Calculator</h1>
 
-        <label for="final_position">Final Position (degrees):</label>
-        <input type="text" id="final_position" name="final_position"><br>
+            <form action="/cgi-bin/calculate_graph.py" method="post">
+                <label for="initial_position">Initial Position (degrees):</label>
+                <input type="text" id="initial_position" name="initial_position"><br>
 
-        <label for="time_duration">Time Duration (seconds):</label>
-        <input type="text" id="time_duration" name="time_duration"><br>
+                <label for="final_position">Final Position (degrees):</label>
+                <input type="text" id="final_position" name="final_position"><br>
 
-        <input type="submit" value="Calculate">
-    </form>
+                <label for="time_duration">Time Duration (seconds):</label>
+                <input type="text" id="time_duration" name="time_duration"><br>
 
-    <!-- Hacker-style "Team" button -->
-    <button id="team-button">Team</button>
+                <input type="submit" value="Calculate">
+            </form>
+            
+            
+            <button id="team-button">Team</button>
+        </div>
+    </div>
 
+    
+    <img src="https://i.graphicmama.com/uploads/2019/4/5cb46e4738d31-funny-robot-cartoon-vector-character.png" alt="Image Description">
+    
     <script>
-        // JavaScript to handle the button click event
+       
         document.getElementById("team-button").addEventListener("click", function() {
-            window.open("team.html", "_blank"); // Open a new HTML page named "team.html" in a new tab
+            window.open("team.html", "_blank"); 
         });
     </script>
 </body>
 </html>
-
